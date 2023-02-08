@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 const CompanySchema = new Schema({
   CompanyName: {
     type: String,
-    //required: true,
-    //unique: true,
+    required: true,
+    unique: true,
   },
-  /*IncorporationCountry: {
+  IncorporationCountry: {
     type: String,
     required: true,
     unique: true,
@@ -22,6 +22,6 @@ const CompanySchema = new Schema({
     type: String,
     required: true,
     unique: true,
-  },*/
+  },
 });
 export default mongoose.model("Company", CompanySchema);

@@ -1,9 +1,8 @@
-import { HomeOutlined, UserOutlined, CopyrightOutlined, CompassOutlined } from '@ant-design/icons';
+import { HomeOutlined, CopyrightOutlined, CompassOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
-import {Moon, ArrowBarRight} from 'react-bootstrap-icons';
+import { ArrowBarRight} from 'react-bootstrap-icons';
 import {React } from 'react';
 import {useNavigate} from 'react-router-dom';
-//import Company from './Company';
 const items = [
   {
     label: 'MainPage',
@@ -22,21 +21,9 @@ const items = [
   },
   
   {
-    label: 'User',
-    key: 'SubMenu',
-    icon: <UserOutlined />,
-    children: [
-      {
-        type: 'dashed',
-        label: 'Dark Mode',
-        icon: <Moon />,
-      },
-      {
-        type: 'option',
-        label: 'Sign Out',
-        icon: <ArrowBarRight/>
-      },
-    ],
+    label: 'Logout',
+    key: 'auth',
+    icon: <ArrowBarRight/>,
   },
   
 ];
@@ -66,7 +53,7 @@ export default function Navigation() {
   return <Menu 
     onClick={({key})=>{
       if(key ==='signout'){
-        //TODO: sign out
+        //TODO: JWT ile logout işlemi yapılacak !!key===auth!!
       }else{
         navigate(key);
       }

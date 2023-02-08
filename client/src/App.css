@@ -2,3 +2,20 @@
   text-align: center;
 }
 
+.login-form {
+  max-width: 300px;
+}
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form-button {
+  width: 100%;
+}
+.space-align-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
