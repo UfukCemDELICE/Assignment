@@ -1,49 +1,61 @@
-import React, { useEffect, useState } from "react";
-import { Table, FloatButton } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
-//import Company from '../layout/Company';
+import React, { useState, useEffect } from "react";
+import { Button, Icon, Table } from "semantic-ui-react";
+import ProductService from "../service/productService";
 export default function ProductList() {
-  const [colums, setColums] = useState([]);
-  const [data, setDataSource] = useState([]);
-
+  const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://dummyjson.com/quotes")
-      .then((res) => res.json())
-      .then((result) => {
-        const list = result.quotes || [];
-        const firstObject = list[0] || {};
-        const cols = [];
-        for (const key in firstObject) {
-          const col = {
-            title: key,
-            dataIndex: key,
-          };
-          cols.push(col);
-        }
-        setColums(cols);
-        setDataSource(list);
-      });
-  }, []);
-  const onAddProduct = () => {
-    const random = parseInt(Math.random() * 1000);
-    const newProduct = {
-      id: random,
-      quote: "testquotes" + random,
-      author: "test" + random,
-    };
-    setDataSource((pre) => {
-      return [...pre, newProduct];
-    });
-  };
+    let productService = new ProductService();
+    productService
+      .getProduct()
+      .then((result) => setProducts(result.data.data))
+      .catch();
+  });
   return (
     <div>
-      <FloatButton
-        onClick={onAddProduct}
-        icon={<PlusOutlined />}
-        type="primary"
-        style={{ right: 94 }}
-      />
-      <Table columns={colums} dataSource={data} scroll={500} />
+      <br /> <br /> <br /> <br />
+      <Table compact celled definition>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell />
+            <Table.HeaderCell>Company Name</Table.HeaderCell>
+            <Table.HeaderCell>Product Name</Table.HeaderCell>
+            <Table.HeaderCell>Product Category</Table.HeaderCell>
+            <Table.HeaderCell>Product Amount</Table.HeaderCell>
+            <Table.HeaderCell>Amount Unit</Table.HeaderCell>
+            <Table.HeaderCell>Actions</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {products.map((product) => (
+            <Table.Row key={product.id}>
+              <Table.Cell collapsing></Table.Cell>
+              <Table.Cell>{product.CompanyName}</Table.Cell>
+              <Table.Cell>{product.ProductName}</Table.Cell>
+              <Table.Cell>{product.ProductCategory}</Table.Cell>
+              <Table.Cell>{product.ProductAmount}</Table.Cell>
+              <Table.Cell>{product.AmountUnit}</Table.Cell>
+              <Table.Cell>Cell</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+        <Table.Footer fullWidth>
+          <Table.Row>
+            <Table.HeaderCell />
+            <Table.HeaderCell colSpan="6">
+              <Button
+                floated="right"
+                icon
+                labelPosition="left"
+                primary
+                size="small"
+              >
+                <Icon name="plus" /> Add Product
+              </Button>
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Footer>
+      </Table>
+      <br /> <br /> <br /> <br />
     </div>
   );
 }

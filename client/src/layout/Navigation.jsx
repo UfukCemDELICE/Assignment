@@ -1,7 +1,7 @@
-import { HomeOutlined, CopyrightOutlined, CompassOutlined } from '@ant-design/icons';
+import { HomeOutlined, CopyrightOutlined, CompassOutlined, UserOutlined, UserAddOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
-import { ArrowBarRight} from 'react-bootstrap-icons';
-import {React } from 'react';
+import { ArrowBarLeft, ArrowBarRight } from 'react-bootstrap-icons';
+import {React, useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 const items = [
   {
@@ -21,15 +21,33 @@ const items = [
   },
   
   {
-    label: 'Logout',
-    key: 'auth',
+    label: 'Login',
+    key: 'auth/login',
     icon: <ArrowBarRight/>,
+  },
+  {
+    label: 'Register',
+    key: 'auth/register',
+    icon: <UserAddOutlined />,
+  },
+  {
+    label: 'User',
+    icon: <UserOutlined />,
+    children: [
+      {
+        type: 'option',
+        label: 'Logout',
+        key: 'signout',
+        icon: <ArrowBarLeft/>,
+      }
+    ],
   },
   
 ];
-
 export default function Navigation() {
+  //const [isAuthenticated, setIsAuthenticated] = useState(true);
   const navigate = useNavigate();
+  //{isAuthenticated ? items[3]&&items[4] : items[5]}
   /*
   const [theme, setTheme] = useState('dark');
   const changeTheme = (value) => {

@@ -1,18 +1,14 @@
 import React from 'react'
-import { Button, Form, Input, Modal } from 'antd';
+import { Button, Form, Input } from 'antd';
+import '../App.css'
 
-export default function Company() {
+export default function CompanyUpdate() {
   const [form] = Form.useForm();
   const onReset = () => {
     form.resetFields();
   };
   return (
-    <div>
-      <Modal
-        title="Update Company"
-        centered
-        width={1000}
-        >
+    <div className='App'>
         <Form>
           <Form.Item name="companyName" rules={[{ required: true }]}>
             <Input placeholder='Company Name'/>
@@ -31,7 +27,6 @@ export default function Company() {
             <Button htmlType="button" onClick={onReset}>Reset</Button>
           </Form.Item>
         </Form>
-      </Modal>
     </div>
   )
 }

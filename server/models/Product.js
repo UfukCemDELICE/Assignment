@@ -17,9 +17,9 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
   },
-  Company: {
+  Company: [{
     type: Schema.Types.ObjectId,
     ref: "Company",
-  },
+  }],
 });
 export default mongoose.model("Product", ProductSchema);

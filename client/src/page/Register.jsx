@@ -3,14 +3,14 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Space } from 'antd';
 import '../App.css'
 //TODO: Jwt Authentication and Authorization will be added 
-export default function SignedIn() {
+export default function Register() {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
   return (
     <div className='App' >
       <br /> <br /> <br /> <br /> 
-      <h1>Log In & Sign Up</h1>
+      <h1>Register</h1>
       <br /> <br /> 
     <Space align='center'> 
       
@@ -32,6 +32,17 @@ export default function SignedIn() {
           ]}
         >
           <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+        </Form.Item>
+        <Form.Item
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your Email!',
+            },
+          ]}
+        >
+          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
         </Form.Item>
         <Form.Item
           name="password"
