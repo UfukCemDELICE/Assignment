@@ -5,8 +5,7 @@ export default function SignOut({signIn}) {
   return (
     <div>
         <Menu.Item>
-            <Button primary onClick={signIn}>Giriş Yap</Button>
-            <Button primary style={{marginLeft:"0.5em"}}>Kayıt Ol</Button>
+            <Button primary onClick={signIn}>Log In</Button>
         </Menu.Item>
     </div>
   )

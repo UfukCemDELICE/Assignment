@@ -61,7 +61,7 @@ export default function Register() {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
+            Register
           </Button>
         </Form.Item>
       </Form>

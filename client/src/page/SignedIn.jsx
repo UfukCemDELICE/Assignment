@@ -1,9 +1,14 @@
 import React from 'react'
+import  {useNavigate}  from 'react-router-dom'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Space } from 'antd';
 import '../App.css'
 //TODO: Jwt Authentication and Authorization will be added 
 export default function SignedIn() {
+  const navigate = useNavigate()
+  const toRegister = () => {
+    navigate("/auth/register")
+  }
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
@@ -52,6 +57,7 @@ export default function SignedIn() {
           <Button type="primary" htmlType="submit" className="login-form-button">
             Log in
           </Button>
+          <Button type='link' onClick={toRegister}>Register</Button>
         </Form.Item>
       </Form>
     </Space>

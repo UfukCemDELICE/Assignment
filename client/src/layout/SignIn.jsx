@@ -8,7 +8,7 @@ export default function SignIn({signOut}) {
             <Image avatar spaced="right" src="https://avatars.githubusercontent.com/u/1000000?v=4" />
             <Dropdown pointing="top left" text='Ufuk'>
                 <Dropdown.Menu>
-                  <Dropdown.Item onClick={signOut} text="Çıkış Yap" icon = "sign-out"/>
+                  <Dropdown.Item onClick={signOut} text="Log Out" icon = "sign-out"/>
                 </Dropdown.Menu>
             </Dropdown>
         </Menu.Item>
