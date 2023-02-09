@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
-
-const AuthSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+const AuthSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
@@ -11,4 +15,5 @@ const AuthSchema = new mongoose.Schema({
     required: true
   }
 });
+//mongoose.set('strictQuery', true);
 module.exports = mongoose.model('auth', AuthSchema);

@@ -22,4 +22,5 @@ const ProductSchema = new Schema({
     ref: "Company",
   }],
 });
-export default mongoose.model("Product", ProductSchema);
+//mongoose.set('strictQuery', true);
+export default mongoose.model("product", ProductSchema);
