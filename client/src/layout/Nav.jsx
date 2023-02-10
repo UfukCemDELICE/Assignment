@@ -29,7 +29,7 @@ export default function Nav() {
       <Segment>
       <Menu inverted fixed="top" Icon='labeled'>
           <Menu.Item name='Main' as={Link} to="/" Icon='home'><Icon name='home' />Home</Menu.Item>
-          <Menu.Item name='Company' as={Link} to="/company"><Icon name='compass' />Company</Menu.Item>
+          <Menu.Item name='Company' as={Link} to="/getCompany"><Icon name='compass' />Company</Menu.Item>
           <Menu.Item name='Product'as={Link} to="/product"><Icon name='product hunt' />Product</Menu.Item>
           <Menu.Menu position='right'>
             {isAuthenticated?<SignIn signOut={handleSignOut} />:<SignOut signIn={handleSignIn}/>}

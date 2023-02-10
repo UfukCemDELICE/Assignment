@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Button, Icon, Table } from "semantic-ui-react";
-import CompanyService from "../service/companyService";
+//import CompanyService from "../service/companyService";
+
 export default function CompanyList() {
+  
   const [companies, setCompanies] = useState([]);
   useEffect(() => {
-    let companyService = new CompanyService();
-    companyService.getCompany().then(result=>setCompanies(result.data.data)).catch();
-  });
+    fetch("http://localhost:5000/getCompany")
+      .then((res) => res.json())
+      .then((data) => setCompanies(data.getCompany));
+  }, []);
+  
   return (
     <div>
       <br /> <br /> <br /> <br />
@@ -22,14 +26,14 @@ export default function CompanyList() {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {companies.map((company) => (
-            <Table.Row key={company.id}>
+          {companies.map((getCompany) => (
+            <Table.Row key={getCompany._id}>
               <Table.Cell collapsing></Table.Cell>
-              <Table.Cell>{company.CompanyName}</Table.Cell>
-              <Table.Cell>{company.IncorporationCountry}</Table.Cell>
-              <Table.Cell>{company.CompanyLegalNumber}</Table.Cell>
-              <Table.Cell>{company.website}</Table.Cell>
-              <Table.Cell>Cell</Table.Cell>
+              <Table.Cell>{getCompany.CompanyName}</Table.Cell>
+              <Table.Cell>{getCompany.CompanyLegalNumber}</Table.Cell>
+              <Table.Cell>{getCompany.IncorporationCountry}</Table.Cell>
+              <Table.Cell>{getCompany.website}</Table.Cell>
+              <Table.Cell>{getCompany._id}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
