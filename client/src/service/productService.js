@@ -1,7 +1,7 @@
 import axios from 'axios';
 export default class ProductService {
   getProduct() {
-    return axios.get('http://localhost:5000/api/product/getall').then(function (response) {
+    return axios.get('http://localhost:5000/getCompany').then(function (response) {
       console.log(response.data);
       console.log(response.status);
       console.log(response.statusText);
