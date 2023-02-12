@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Icon, Table } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 //import CompanyService from "../service/companyService";
 
 export default function CompanyList() {
@@ -10,6 +11,7 @@ export default function CompanyList() {
       .then((res) => res.json())
       .then((data) => setCompanies(data.getCompany));
   }, []);
+
   
   return (
     <div>
@@ -33,7 +35,23 @@ export default function CompanyList() {
               <Table.Cell>{getCompany.CompanyLegalNumber}</Table.Cell>
               <Table.Cell>{getCompany.IncorporationCountry}</Table.Cell>
               <Table.Cell>{getCompany.website}</Table.Cell>
-              <Table.Cell>{getCompany._id}</Table.Cell>
+              <Table.Cell><Button positive>Edit</Button><Button negative onClick={(e)=>{
+                  fetch(`http://localhost:5000/deleteCompany${getCompany._id}`, {
+                  method: "DELETE",
+                })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  console.log(data);
+                })
+                .catch(error => {
+                  console.error("There was a problem with the fetch operation:", error);
+                }, []);
+              }}>Delete</Button></Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
@@ -47,6 +65,8 @@ export default function CompanyList() {
                 labelPosition="left"
                 primary
                 size="small"
+                as={Link}
+                to="/addCompany"
               >
                 <Icon name="plus" /> Add Company
               </Button>

@@ -11,7 +11,6 @@ const CompanySchema = new Schema({
   IncorporationCountry: {
     type: String,
     required: true,
-    unique: true,
   },
   CompanyLegalNumber: {
     type: String,

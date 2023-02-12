@@ -14,12 +14,12 @@ const ProductSchema = new Schema({
     required: true,
   },
   AmountUnit: {
-    type: String,
+    type: Number,
     required: true,
   },
   Company: [{
-    type: Schema.Types.ObjectId,
-    ref: "Company",
+    type: Schema.Types.String,
+    ref: "Company[0]",
   }],
 });
 //mongoose.set('strictQuery', true);
