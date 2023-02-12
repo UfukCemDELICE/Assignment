@@ -15,5 +15,5 @@ const AuthSchema = new Schema({
     required: true
   }
 });
-//mongoose.set('strictQuery', true);
+
 module.exports = mongoose.model('auth', AuthSchema);

@@ -5,6 +5,7 @@ const { Title } = Typography;
 export default function MainPage() {
   const number = 0
   const lastAddedCompanies = []
+
   const title = (`There are ${number} companies in the system right now, last added companies are : ${lastAddedCompanies}`)
   return (
     

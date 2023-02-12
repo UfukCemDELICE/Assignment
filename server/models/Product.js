@@ -22,5 +22,5 @@ const ProductSchema = new Schema({
     ref: "Company[0]",
   }],
 });
-//mongoose.set('strictQuery', true);
+
 module.exports = mongoose.model("product", ProductSchema);

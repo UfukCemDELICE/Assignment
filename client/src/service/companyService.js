@@ -8,6 +8,5 @@ export default class CompanyService {
       console.log(response.headers);
       console.log(response.config);
     });
-    // link olarak Restful servise request atıyoruz.
   }
 }

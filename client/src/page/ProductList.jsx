@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Icon, Table } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-//import ProductService from "../service/productService";
+
 export default function ProductList() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function ProductList() {
                   }
                   return response.json();
                 })
-                .then(data => setProducts(data.getProduct))
+                
                 .catch(error => {
                   console.error("There was a problem with the fetch operation:", error);
                 }, [])}}  >Delete</Button></Table.Cell>

@@ -6,7 +6,6 @@ const CompanySchema = new Schema({
   CompanyName: {
     type: String,
     required: true,
-    unique: true,
   },
   IncorporationCountry: {
     type: String,
